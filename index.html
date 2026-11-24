@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Materi belajar UI/UX Designer untuk pemula dan persiapan interview kerja.">
+<title>UI/UX Starter Guide — Materi & Interview</title>
+<style>
+:root{
+  --bg:#f6f7fb;--surface:#fff;--ink:#20243a;--muted:#697089;--line:#e8eaf2;
+  --purple:#6d5ce8;--purple-soft:#efedff;--blue:#4b8de8;--blue-soft:#eaf3ff;
+  --mint:#35a98b;--mint-soft:#e8f7f2;--orange:#e99a42;--orange-soft:#fff3e4;
+  --pink:#df7198;--pink-soft:#fff0f5;--shadow:0 12px 34px rgba(35,39,75,.07);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit}
+.topbar{height:68px;position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100% - 1180px)/2))}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.4px}.brand-mark{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--purple),#9c8dff);display:grid;place-items:center;color:#fff;font-weight:900}
+.top-actions{display:flex;align-items:center;gap:12px}.progress-mini{font-size:12px;color:var(--muted)}.progress-track{width:110px;height:7px;background:#ececf4;border-radius:20px;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--mint);transition:width .2s}
+.layout{max-width:1180px;margin:28px auto;padding:0 22px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:28px}
+.sidebar{position:sticky;top:91px;align-self:start;max-height:calc(100vh - 110px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.side-title{font-size:11px;text-transform:uppercase;letter-spacing:1.4px;color:#9298ad;font-weight:800;margin:3px 0 12px}
+.nav{display:grid;gap:4px}.nav a{font-size:13px;color:#626981;padding:8px 10px;border-radius:9px;display:flex;gap:9px;align-items:center}.nav a:hover,.nav a.active{background:var(--purple-soft);color:var(--purple);font-weight:700}.nav-num{font-size:10px;color:#9a9eb0;width:17px}
+.sidebar-note{margin-top:18px;padding:12px;background:var(--mint-soft);border-radius:12px;font-size:12px;color:#357966}
+main{min-width:0}.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#29264f,#5546a9 60%,#8275e9);border-radius:24px;padding:38px;color:#fff;box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.16);border-radius:50%;right:-65px;top:-95px;box-shadow:0 0 0 32px rgba(255,255,255,.045),0 0 0 68px rgba(255,255,255,.035)}
+.eyebrow{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:800;color:#d4ceff}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.12;letter-spacing:-1.8px;margin:12px 0;max-width:650px}.hero p{color:#e4e0ff;max-width:610px;margin:0 0 20px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:11px;padding:5px 10px;border:1px solid rgba(255,255,255,.25);border-radius:30px;color:#f2efff}
+.hero-stats{display:flex;gap:25px;margin-top:28px;flex-wrap:wrap}.stat strong{display:block;font-size:21px}.stat span{font-size:11px;color:#d6d1ff}
+.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:17px 0 30px}.intro-card{padding:16px;border:1px solid var(--line);background:#fff;border-radius:15px}.intro-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;margin-bottom:8px}.intro-card strong{display:block;font-size:13px}.intro-card p{font-size:12px;color:var(--muted);margin:3px 0 0}
+.section{margin:30px 0;scroll-margin-top:90px}.section-head{display:flex;align-items:flex-start;gap:13px;margin-bottom:15px}.section-number{width:37px;height:37px;flex:none;border-radius:12px;background:var(--purple-soft);color:var(--purple);display:grid;place-items:center;font-weight:800}.section h2{font-size:23px;letter-spacing:-.6px;margin:0;line-height:1.25}.section-sub{font-size:13px;color:var(--muted);margin:4px 0 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:20px;margin:12px 0;box-shadow:0 4px 16px rgba(35,39,75,.025)}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mini-card{padding:17px;border:1px solid var(--line);border-radius:14px;background:#fff}.mini-card h3{margin:0 0 5px;font-size:15px}.mini-card p{margin:0;color:var(--muted);font-size:13px}
+.tag{display:inline-flex;padding:4px 9px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.3px;background:var(--purple-soft);color:var(--purple);margin-bottom:8px}
+h3{font-size:16px;margin:0 0 8px}p{margin:7px 0}.muted{color:var(--muted)}ul,ol{padding-left:20px;margin:8px 0}li{margin:5px 0}
+.callout{padding:14px 16px;border-radius:13px;background:var(--blue-soft);border-left:3px solid var(--blue);font-size:13px;margin:14px 0}.callout.green{background:var(--mint-soft);border-color:var(--mint)}.callout.orange{background:var(--orange-soft);border-color:var(--orange)}.callout.pink{background:var(--pink-soft);border-color:var(--pink)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:13px;margin:12px 0}table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f8f8fc;color:#555c75;font-size:11px;text-transform:uppercase;letter-spacing:.5px}tr:last-child td{border-bottom:0}
+.steps{display:grid;gap:0}.step{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.step:last-child{border:0}.step-dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--purple-soft);color:var(--purple);font-weight:800;font-size:12px}.step h3{margin:0 0 3px}.step p{font-size:13px;color:var(--muted);margin:0}
+.codeflow{background:#24243b;color:#eae9ff;border-radius:13px;padding:17px;font:12px/1.75 ui-monospace,monospace;white-space:pre-wrap;overflow:auto}
+.term-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.term{padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.term b{font-size:13px;display:block}.term span{font-size:12px;color:var(--muted)}
+.checklist{display:grid;gap:9px}.check-group{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}.check-group h3{font-size:14px;margin:0 0 9px}.check-item{display:flex;align-items:flex-start;gap:9px;padding:5px 0;font-size:13px;color:#4e556d;cursor:pointer}.check-item input{accent-color:var(--mint);width:16px;height:16px;margin:3px 0 0;flex:none}.check-item:has(input:checked) span{text-decoration:line-through;color:#9a9eae}
+.check-summary{position:sticky;top:78px;z-index:5;background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:12px}.check-summary strong{font-size:13px}.check-summary small{color:var(--muted)}.bar{height:7px;background:#eceef4;border-radius:20px;flex:1;overflow:hidden}.bar>i{display:block;height:100%;width:0;background:var(--mint);transition:width .2s}
+.qa{border:1px solid var(--line);border-radius:13px;padding:15px;margin:10px 0;background:#fff}.qa h3{font-size:14px}.answer{padding:11px 13px;background:#f7f7fc;border-radius:10px;font-size:13px;color:#555c75;margin-top:9px}
+.quiz-question{padding:17px 0;border-bottom:1px solid var(--line)}.quiz-question:last-child{border:0}.quiz-question p{font-weight:700;font-size:14px}.option{display:block;padding:7px 10px;border:1px solid var(--line);border-radius:9px;margin:6px 0;font-size:13px;cursor:pointer}.option:hover{border-color:#b8b0ff;background:#faf9ff}.option input{accent-color:var(--purple);margin-right:7px}
+.btn{border:0;border-radius:10px;padding:10px 15px;background:var(--purple);color:#fff;font-weight:700;font-size:13px;cursor:pointer}.btn.secondary{background:#f0efff;color:var(--purple)}.btn:hover{filter:brightness(.97)}
+.footer{text-align:center;padding:30px 10px;color:#9297a9;font-size:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.nav{grid-template-columns:repeat(2,1fr)}.sidebar-note{display:none}}
+@media(max-width:600px){.topbar{padding:0 14px}.progress-mini{display:none}.layout{padding:0 13px;margin:15px auto}.hero{padding:27px 22px}.intro-grid,.three-col{grid-template-columns:1fr}.two-col,.term-grid{grid-template-columns:1fr}.section h2{font-size:20px}.card{padding:15px}.nav{grid-template-columns:1fr 1fr}.hero-stats{gap:15px}}
+@media print{.topbar,.sidebar,.top-actions,.btn{display:none!important}.layout{display:block;max-width:none;margin:0;padding:0}.hero{background:#eee;color:#222;box-shadow:none}.hero p,.eyebrow,.stat span{color:#444}.card,.mini-card{break-inside:avoid;box-shadow:none}.section{break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#top"><span class="brand-mark">U</span><span>UI/UX Starter Guide <span style="color:var(--purple)">by Vermilion</span></span></a>
+  <div class="top-actions"><span class="progress-mini" id="progressText">0% checklist selesai</span><div class="progress-track"><div class="progress-fill" id="topProgress"></div></div><button class="btn secondary" onclick="window.print()">Cetak / PDF</button></div>
+</header>
+<div class="layout" id="top">
+<aside class="sidebar">
+  <div class="side-title">Daftar materi</div>
+  <nav class="nav">
+    <a href="#dasar"><span class="nav-num">01</span> Pengenalan UI/UX</a>
+    <a href="#ui"><span class="nav-num">02</span> Prinsip UI</a>
+    <a href="#ux"><span class="nav-num">03</span> Prinsip UX</a>
+    <a href="#thinking"><span class="nav-num">04</span> Design Thinking</a>
+    <a href="#proses"><span class="nav-num">05</span> Proses desain</a>
+    <a href="#tools"><span class="nav-num">06</span> Tools</a>
+    <a href="#istilah"><span class="nav-num">07</span> Istilah penting</a>
+    <a href="#case"><span class="nav-num">08</span> Contoh case study</a>
+    <a href="#interview"><span class="nav-num">09</span> Tanya jawab interview</a>
+    <a href="#kolaborasi"><span class="nav-num">10</span> Kolaborasi tim</a>
+    <a href="#catatan"><span class="nav-num">11</span> Checklist catatan</a>
+    <a href="#jadwal"><span class="nav-num">12</span> Rencana belajar</a>
+    <a href="#tips"><span class="nav-num">13</span> Tips interview</a>
+    <a href="#latihan"><span class="nav-num">14</span> Mini test</a>
+  </nav>
+  <div class="sidebar-note"><b>Tips belajar</b><br>Centang setiap poin setelah kamu pahami. Progress akan tersimpan di browser perangkat ini.</div>
+</aside>
+<main>
+<section class="hero">
+  <div class="eyebrow">Beginner learning path · Interview preparation</div>
+  <h1>Mulai memahami<br>UI/UX Design.</h1>
+  <p>Panduan ringkas namun lengkap untuk memahami dasar UI/UX, proses desain produk digital, istilah penting, dan persiapan interview kerja.</p>
+  <div class="chips"><span class="chip">Level pemula</span><span class="chip">Materi + contoh</span><span class="chip">Checklist belajar</span></div>
+  <div class="hero-stats"><div class="stat"><strong>14</strong><span>Bagian materi</span></div><div class="stat"><strong>5</strong><span>Tahap Design Thinking</span></div><div class="stat"><strong>1</strong><span>Mini test</span></div></div>
+</section>
+<div class="intro-grid">
+  <div class="intro-card"><div class="intro-icon" style="background:var(--purple-soft)">✦</div><strong>Belajar dari dasar</strong><p>Kenali konsep UI dan UX dengan contoh sehari-hari.</p></div>
+  <div class="intro-card"><div class="intro-icon" style="background:var(--blue-soft)">⌘</div><strong>Pahami alur kerja</strong><p>Pelajari proses dari riset sampai pengujian desain.</p></div>
+  <div class="intro-card"><div class="intro-icon" style="background:var(--mint-soft)">✓</div><strong>Siap interview</strong><p>Latih jawaban dan ukur pemahaman lewat checklist.</p></div>
+</div>
+
+<section class="section" id="dasar">
+<div class="section-head"><div class="section-number">01</div><div><h2>Pengenalan UI/UX</h2><p class="section-sub">Memahami dua bagian penting dalam produk digital.</p></div></div>
+<div class="two-col">
+ <div class="mini-card"><span class="tag">USER INTERFACE</span><h3>UI — Tampilan</h3><p>Bagian visual yang dilihat dan digunakan langsung oleh pengguna.</p><ul><li>Warna dan tipografi</li><li>Tombol dan ikon</li><li>Layout dan navigasi</li><li>Gambar dan formulir</li></ul><p class="muted"><b>Tujuan:</b> tampilan menarik, jelas, konsisten, dan mudah dipahami.</p></div>
+ <div class="mini-card"><span class="tag" style="background:var(--mint-soft);color:var(--mint)">USER EXPERIENCE</span><h3>UX — Pengalaman</h3><p>Keseluruhan pengalaman saat pengguna memakai sebuah produk.</p><ul><li>Kemudahan menemukan menu</li><li>Alur login dan transaksi</li><li>Kejelasan informasi</li><li>Respons saat terjadi kesalahan</li></ul><p class="muted"><b>Tujuan:</b> produk efektif, efisien, mudah digunakan, dan membantu pengguna.</p></div>
+</div>
+<div class="callout green"><b>Wajib diingat:</b> UI = tampilan. UX = pengalaman. UI dan UX harus bekerja sama untuk menghasilkan produk digital yang baik.</div>
+<div class="card"><h3>Contoh: aplikasi pesan makanan</h3><div class="two-col"><div><b>Contoh UI</b><p class="muted">Warna tombol pesan, gambar makanan, font, ikon keranjang, dan susunan menu.</p></div><div><b>Contoh UX</b><p class="muted">Pengguna dapat mencari makanan, memilih menu, membayar, dan melacak pesanan dengan mudah.</p></div></div></div>
+<div class="table-wrap"><table><thead><tr><th>UI</th><th>UX</th></tr></thead><tbody><tr><td>Fokus pada tampilan</td><td>Fokus pada pengalaman</td></tr><tr><td>Memilih warna dan font</td><td>Memahami kebutuhan pengguna</td></tr><tr><td>Membuat tombol</td><td>Menentukan alur dan fungsi tombol</td></tr><tr><td>Mengatur layout</td><td>Mempermudah pengguna menyelesaikan tujuan</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="ui">
+<div class="section-head"><div class="section-number">02</div><div><h2>Prinsip dasar UI Design</h2><p class="section-sub">Prinsip visual agar antarmuka terlihat rapi dan mudah dipahami.</p></div></div>
+<div class="two-col">
+ <div class="mini-card"><span class="tag">01</span><h3>Consistency — Konsistensi</h3><p>Gunakan gaya yang seragam di seluruh halaman: warna tombol, font, ukuran heading, dan bentuk komponen.</p></div>
+ <div class="mini-card"><span class="tag">02</span><h3>Visual Hierarchy — Hierarki visual</h3><p>Atur tingkat kepentingan elemen. Judul lebih menonjol, informasi penting mudah terlihat, dan detail tambahan lebih kecil.</p></div>
+ <div class="mini-card"><span class="tag">03</span><h3>Contrast — Kontras</h3><p>Gunakan perbedaan warna, ukuran, atau ketebalan untuk membedakan elemen dan meningkatkan keterbacaan.</p></div>
+ <div class="mini-card"><span class="tag">04</span><h3>Alignment — Perataan</h3><p>Susun elemen dengan garis perataan yang jelas agar layout terlihat rapi dan terstruktur.</p></div>
+ <div class="mini-card"><span class="tag">05</span><h3>White Space — Ruang kosong</h3><p>Beri jarak antar elemen agar halaman tidak padat, informasi mudah dibaca, dan fokus lebih jelas.</p></div>
+ <div class="mini-card"><span class="tag">06</span><h3>Accessibility — Aksesibilitas</h3><p>Pastikan teks terbaca, kontras cukup, status tidak dibedakan hanya dengan warna, dan area tombol nyaman disentuh.</p></div>
+</div>
+<div class="callout"><b>Contoh jawaban interview:</b> “Saya memperhatikan konsistensi, visual hierarchy, warna, tipografi, alignment, white space, dan accessibility agar tampilan tidak hanya menarik tetapi juga mudah digunakan.”</div>
+</section>
+
+<section class="section" id="ux">
+<div class="section-head"><div class="section-number">03</div><div><h2>Prinsip dasar UX Design</h2><p class="section-sub">Membuat produk mudah dipelajari dan membantu pengguna mencapai tujuannya.</p></div></div>
+<div class="table-wrap"><table><thead><tr><th>Prinsip</th><th>Makna</th><th>Contoh</th></tr></thead><tbody>
+<tr><td><b>Usability</b></td><td>Mudah digunakan</td><td>Menu dan tombol mudah ditemukan.</td></tr>
+<tr><td><b>Accessibility</b></td><td>Dapat diakses beragam pengguna</td><td>Teks terbaca dan kontras warna cukup.</td></tr>
+<tr><td><b>Efficiency</b></td><td>Menyelesaikan tugas secara efisien</td><td>Checkout tidak memiliki langkah yang tidak perlu.</td></tr>
+<tr><td><b>Learnability</b></td><td>Mudah dipelajari pengguna baru</td><td>Ikon dan navigasi mudah dimengerti.</td></tr>
+<tr><td><b>Feedback</b></td><td>Sistem memberi respons</td><td>Muncul pesan “Data berhasil disimpan”.</td></tr>
+<tr><td><b>Error Prevention</b></td><td>Mencegah kesalahan</td><td>Konfirmasi sebelum menghapus data.</td></tr>
+<tr><td><b>User-Centered Design</b></td><td>Berpusat pada kebutuhan pengguna</td><td>Keputusan desain didasarkan pada kebutuhan dan pengujian.</td></tr>
+</tbody></table></div>
+<div class="card"><h3>Contoh UX pada halaman login</h3><ul><li>Label email dan password jelas.</li><li>Tersedia fitur tampil/sembunyikan password.</li><li>Ada pesan ketika password salah.</li><li>Tersedia fitur lupa password.</li><li>Ada indikator ketika proses login berlangsung.</li></ul><div class="callout green">UX yang baik bukan berarti menambahkan banyak fitur. UX yang baik memberikan solusi tepat dengan cara sesederhana mungkin.</div></div>
+</section>
+
+<section class="section" id="thinking">
+<div class="section-head"><div class="section-number">04</div><div><h2>Design Thinking</h2><p class="section-sub">Pendekatan pemecahan masalah dengan fokus pada kebutuhan pengguna.</p></div></div>
+<div class="steps">
+ <div class="step"><div class="step-dot">1</div><div><h3>Empathize — Memahami pengguna</h3><p>Pelajari kebutuhan, kebiasaan, kesulitan, dan masalah pengguna melalui wawancara, observasi, atau survei.</p></div></div>
+ <div class="step"><div class="step-dot">2</div><div><h3>Define — Menentukan masalah</h3><p>Rumuskan masalah utama berdasarkan hasil riset. Contoh: pengguna kesulitan menemukan menu pembayaran.</p></div></div>
+ <div class="step"><div class="step-dot">3</div><div><h3>Ideate — Mencari ide solusi</h3><p>Buat beberapa alternatif solusi. Contoh: sederhanakan navigasi dan tampilkan tombol pembayaran dengan lebih jelas.</p></div></div>
+ <div class="step"><div class="step-dot">4</div><div><h3>Prototype — Membuat purwarupa</h3><p>Buat rancangan yang dapat disimulasikan atau dicoba, misalnya prototype interaktif di Figma.</p></div></div>
+ <div class="step"><div class="step-dot">5</div><div><h3>Test — Menguji</h3><p>Minta pengguna mencoba desain, amati kesulitannya, kumpulkan masukan, lalu perbaiki desain.</p></div></div>
+</div>
+<div class="callout orange"><b>Urutan hafalan:</b> Empathize → Define → Ideate → Prototype → Test. Proses ini bisa berulang; hasil test dapat membuat designer kembali memperbaiki ide atau desain.</div>
+</section>
+
+<section class="section" id="proses">
+<div class="section-head"><div class="section-number">05</div><div><h2>Tahapan membuat desain aplikasi / website</h2><p class="section-sub">Alur kerja umum dari riset sampai pengujian.</p></div></div>
+<div class="steps">
+ <div class="step"><div class="step-dot">1</div><div><h3>Research — Riset</h3><p>Kumpulkan informasi melalui user interview, survei, observasi, competitor analysis, dan feedback.</p></div></div>
+ <div class="step"><div class="step-dot">2</div><div><h3>User Persona</h3><p>Representasi pengguna berdasarkan riset. Contoh: Andi, mahasiswa 23 tahun, ingin mencari makanan sesuai budget; kesulitannya menemukan filter harga.</p></div></div>
+ <div class="step"><div class="step-dot">3</div><div><h3>User Flow</h3><p>Alur langkah pengguna untuk mencapai tujuan. Contoh login:</p><div class="codeflow">Buka aplikasi
+     ↓
+Halaman login
+     ↓
+Input email & password
+     ↓
+Klik Login
+     ↓
+Validasi data
+  ↙       ↘
+Benar     Salah
+  ↓         ↓
+Dashboard  Pesan error</div></div></div>
+ <div class="step"><div class="step-dot">4</div><div><h3>Information Architecture (IA)</h3><p>Susun dan kelompokkan informasi agar mudah ditemukan.</p><div class="codeflow">Website
+├── Home
+├── Produk
+│   ├── Kategori
+│   └── Detail produk
+├── Keranjang
+├── Checkout
+└── Profil
+    ├── Biodata
+    └── Riwayat pesanan</div></div></div>
+ <div class="step"><div class="step-dot">5</div><div><h3>Wireframe</h3><p>Kerangka dasar halaman. Fokus pada posisi elemen, struktur, tata letak, navigasi, dan susunan informasi; biasanya belum memakai detail visual final.</p></div></div>
+ <div class="step"><div class="step-dot">6</div><div><h3>Mockup</h3><p>Desain visual lebih detail: warna, font, ikon, gambar, komponen, dan detail tampilan.</p></div></div>
+ <div class="step"><div class="step-dot">7</div><div><h3>Prototype</h3><p>Simulasi interaksi, seperti tombol berpindah halaman, navigasi dapat dicoba, dan alur checkout bisa disimulasikan.</p></div></div>
+ <div class="step"><div class="step-dot">8</div><div><h3>Usability Testing</h3><p>Uji apakah pengguna dapat menyelesaikan tugas. Tanyakan apakah tombol mudah ditemukan, alur membingungkan, atau informasi sulit dipahami.</p></div></div>
+</div>
+<div class="callout green"><b>Ringkasan alur:</b> Research → Persona → User Flow → Information Architecture → Wireframe → Mockup → Prototype → Usability Testing → Iterasi.</div>
+</section>
+
+<section class="section" id="tools">
+<div class="section-head"><div class="section-number">06</div><div><h2>Tools yang perlu dikenal</h2><p class="section-sub">Kenali fungsi alat, lalu fokus berlatih menggunakan Figma.</p></div></div>
+<div class="two-col">
+ <div class="mini-card"><span class="tag">PRIORITAS UTAMA</span><h3>Figma</h3><p>Untuk UI design, wireframe, prototype, design system, dan kolaborasi desain.</p><p><a href="https://www.figma.com/" target="_blank" rel="noopener" style="color:var(--purple);font-weight:700">Buka Figma ↗</a></p></div>
+ <div class="mini-card"><h3>FigJam</h3><p>Untuk brainstorming, user flow, mind mapping, dan kolaborasi ide.</p></div>
+ <div class="mini-card"><h3>Adobe Photoshop</h3><p>Untuk mengedit foto, mengolah gambar, dan membuat aset visual.</p></div>
+ <div class="mini-card"><h3>Adobe Illustrator</h3><p>Untuk membuat ikon, ilustrasi, logo, dan elemen vector.</p></div>
+ <div class="mini-card"><h3>Miro</h3><p>Untuk brainstorming, diagram, user journey, dan kolaborasi tim.</p></div>
+</div>
+<div class="card"><h3>Fitur Figma yang sebaiknya dipelajari</h3><div class="term-grid">
+ <div class="term"><b>Frame</b><span>Area kerja untuk layar atau komponen.</span></div><div class="term"><b>Shape</b><span>Membuat bentuk dasar.</span></div>
+ <div class="term"><b>Text</b><span>Menambahkan teks dan mengatur tipografi.</span></div><div class="term"><b>Auto Layout</b><span>Mengatur jarak dan ukuran elemen secara otomatis.</span></div>
+ <div class="term"><b>Components</b><span>Elemen reusable yang bisa dipakai ulang.</span></div><div class="term"><b>Variants</b><span>Beberapa keadaan/variasi dari component.</span></div>
+ <div class="term"><b>Constraints</b><span>Mengatur perilaku posisi/ukuran elemen saat frame berubah.</span></div><div class="term"><b>Prototype</b><span>Menghubungkan layar dan interaksi.</span></div>
+ <div class="term"><b>Layers</b><span>Mengelola susunan elemen desain.</span></div><div class="term"><b>Design System</b><span>Aturan dan komponen desain yang konsisten.</span></div>
+</div></div>
+</section>
+
+<section class="section" id="istilah">
+<div class="section-head"><div class="section-number">07</div><div><h2>Istilah penting UI/UX</h2><p class="section-sub">Istilah yang sering muncul saat interview dan pekerjaan sehari-hari.</p></div></div>
+<div class="term-grid">
+ <div class="term"><b>Design System</b><span>Kumpulan aturan, gaya, dan komponen desain.</span></div>
+ <div class="term"><b>Style Guide</b><span>Panduan warna, font, ikon, dan visual.</span></div>
+ <div class="term"><b>Component</b><span>Elemen desain yang dapat digunakan kembali.</span></div>
+ <div class="term"><b>Auto Layout</b><span>Fitur Figma untuk mengatur layout otomatis.</span></div>
+ <div class="term"><b>Responsive Design</b><span>Desain menyesuaikan ukuran layar perangkat.</span></div>
+ <div class="term"><b>Grid System</b><span>Sistem pembagian area untuk menyusun layout.</span></div>
+ <div class="term"><b>CTA</b><span>Call to Action: ajakan tindakan seperti Sign Up atau Buy Now.</span></div>
+ <div class="term"><b>User Journey</b><span>Perjalanan dan pengalaman pengguna saat berinteraksi dengan produk.</span></div>
+ <div class="term"><b>Pain Point</b><span>Kesulitan atau masalah yang dialami pengguna.</span></div>
+ <div class="term"><b>Affordance</b><span>Petunjuk tentang bagaimana suatu elemen dapat digunakan.</span></div>
+ <div class="term"><b>Feedback</b><span>Respons sistem terhadap tindakan pengguna.</span></div>
+ <div class="term"><b>Usability</b><span>Tingkat kemudahan suatu produk digunakan.</span></div>
+ <div class="term"><b>Accessibility</b><span>Kemudahan akses bagi berbagai kemampuan pengguna.</span></div>
+ <div class="term"><b>Iteration</b><span>Proses evaluasi dan perbaikan desain berulang.</span></div>
+ <div class="term"><b>Handoff</b><span>Penyerahan desain dan spesifikasi kepada developer.</span></div>
+ <div class="term"><b>UX Research</b><span>Penelitian untuk memahami kebutuhan dan perilaku pengguna.</span></div>
+</div>
+</section>
+
+<section class="section" id="case">
+<div class="section-head"><div class="section-number">08</div><div><h2>Contoh case study UI/UX</h2><p class="section-sub">Simulasi proyek aplikasi pemesanan makanan bernama FoodEase.</p></div></div>
+<div class="card">
+ <span class="tag">PROJECT PRACTICE</span><h3>FoodEase — Aplikasi pemesanan makanan</h3>
+ <p class="muted">Contoh ini untuk latihan menjelaskan proses berpikir. Bukan klaim proyek nyata atau hasil riset yang benar-benar telah dilakukan.</p>
+ <h3 style="margin-top:18px">A. Masalah yang ingin diselesaikan</h3><p>Pengguna kesulitan menemukan makanan sesuai harga dan membutuhkan waktu lama untuk menyelesaikan proses pemesanan.</p>
+ <h3>B. Target pengguna</h3><ul><li>Mahasiswa.</li><li>Pekerja kantoran.</li><li>Pengguna smartphone.</li><li>Orang yang ingin memesan makanan secara praktis.</li></ul>
+ <h3>C. Pain point pengguna</h3><ol><li>Sulit mencari makanan sesuai budget.</li><li>Informasi harga kurang jelas.</li><li>Proses checkout terlalu panjang.</li><li>Status pesanan sulit diketahui.</li></ol>
+ <h3>D. Solusi desain</h3>
+ <div class="table-wrap"><table><thead><tr><th>Masalah</th><th>Solusi</th></tr></thead><tbody><tr><td>Sulit mencari makanan</td><td>Fitur pencarian dan filter.</td></tr><tr><td>Harga kurang jelas</td><td>Tampilkan harga dengan hierarki visual yang jelas.</td></tr><tr><td>Checkout terlalu panjang</td><td>Sederhanakan langkah checkout.</td></tr><tr><td>Status pesanan tidak jelas</td><td>Tambahkan pelacakan pesanan.</td></tr></tbody></table></div>
+ <h3>E. Proses desain</h3><ol><li>Riset pengguna.</li><li>Identifikasi masalah.</li><li>Buat user persona.</li><li>Susun user flow.</li><li>Buat wireframe.</li><li>Buat mockup.</li><li>Buat prototype.</li><li>Lakukan usability testing.</li><li>Perbaiki desain berdasarkan feedback.</li></ol>
+ <h3>F. Tantangan</h3><p>Menyeimbangkan tampilan yang menarik dengan kebutuhan pengguna agar proses pemesanan tetap sederhana.</p>
+ <h3>G. Cara mengukur keberhasilan</h3><ul><li>Pengguna lebih mudah menemukan produk.</li><li>Pengguna berhasil menyelesaikan checkout.</li><li>Kesalahan saat pemesanan berkurang.</li><li>Feedback pengguna menunjukkan pengalaman yang lebih baik.</li></ul>
+ <div class="callout orange">Saat interview, jangan mengaku sudah melakukan riset, pengujian, atau memperoleh hasil tertentu jika itu hanya proyek simulasi. Jelaskan sebagai latihan atau konsep pribadi.</div>
+</div>
+</section>
+
+<section class="section" id="interview">
+<div class="section-head"><div class="section-number">09</div><div><h2>Pertanyaan dan contoh jawaban interview</h2><p class="section-sub">Gunakan sebagai referensi, lalu sesuaikan dengan pengalaman dan gaya bicaramu sendiri.</p></div></div>
+<div class="qa"><h3>1. Apa yang kamu ketahui tentang UI/UX?</h3><div class="answer">“Menurut saya, UI/UX merupakan dua aspek penting dalam pengembangan produk digital. UI berfokus pada tampilan visual seperti warna, typography, layout, dan komponen. Sedangkan UX berfokus pada pengalaman pengguna ketika menggunakan produk, apakah produk tersebut mudah dipahami, nyaman, dan dapat membantu menyelesaikan kebutuhan pengguna.”</div></div>
+<div class="qa"><h3>2. Apa perbedaan UI dan UX?</h3><div class="answer">“UI lebih berfokus pada bagaimana sebuah produk terlihat, sedangkan UX berfokus pada bagaimana produk tersebut digunakan dan dirasakan oleh pengguna. Keduanya saling berkaitan karena tampilan yang baik juga harus didukung pengalaman penggunaan yang baik.”</div></div>
+<div class="qa"><h3>3. Bagaimana proses kamu membuat desain aplikasi?</h3><div class="answer">“Pertama, saya akan memahami kebutuhan dan masalah pengguna melalui research. Kemudian menentukan masalah utama, membuat user flow, menyusun wireframe, membuat desain visual atau mockup, lalu membuat prototype. Setelah itu saya akan melakukan usability testing untuk mengetahui apakah desain sudah mudah digunakan atau masih perlu diperbaiki.”</div></div>
+<div class="qa"><h3>4. Apa tools yang kamu gunakan?</h3><div class="answer">“Saya mempelajari Figma sebagai tools utama untuk membuat UI design, wireframe, dan prototype. Saya juga memiliki pengetahuan menggunakan Adobe Photoshop dan Illustrator untuk mengolah aset visual dan elemen desain.” Sesuaikan dengan kemampuan yang benar-benar kamu miliki.</div></div>
+<div class="qa"><h3>5. Bagaimana jika desain kamu mendapatkan kritik?</h3><div class="answer">“Saya akan menerima kritik sebagai bagian dari proses pengembangan desain. Saya akan memahami alasan di balik masukan tersebut, mengevaluasi apakah masukan itu sesuai dengan kebutuhan pengguna, kemudian melakukan perbaikan jika memang diperlukan.”</div></div>
+<div class="qa"><h3>6. Bagaimana jika belum memiliki pengalaman sebagai UI/UX Designer?</h3><div class="answer">“Saya masih dalam tahap mengembangkan kemampuan di bidang UI/UX. Namun, saya sudah mulai mempelajari prinsip desain, proses UX, dan penggunaan Figma. Saya juga memiliki ketertarikan pada desain visual sehingga ingin mengembangkan kemampuan tersebut ke arah UI/UX. Saya siap belajar, menerima arahan, dan beradaptasi dengan proses kerja tim.”</div></div>
+<div class="qa"><h3>7. Apa yang membuat desain UI/UX dikatakan berhasil?</h3><div class="answer">“Desain yang berhasil bukan hanya terlihat menarik, tetapi juga mampu menyelesaikan masalah pengguna. Indikatornya bisa dilihat dari kemudahan pengguna menyelesaikan tugas, feedback pengguna, dan hasil usability testing.”</div></div>
+<div class="qa"><h3>8. Bagaimana jika developer mengatakan desain sulit diimplementasikan?</h3><div class="answer">“Saya akan berdiskusi dengan developer untuk memahami kendala teknisnya. Kemudian mencari alternatif desain yang tetap memenuhi kebutuhan pengguna tetapi lebih memungkinkan untuk diimplementasikan. Komunikasi antara designer dan developer sangat penting.”</div></div>
+<div class="qa"><h3>9. Apa itu user-centered design?</h3><div class="answer">“User-centered design adalah pendekatan desain yang menempatkan kebutuhan, tujuan, dan masalah pengguna sebagai fokus utama dalam proses pengembangan produk.”</div></div>
+<div class="qa"><h3>10. Apa kelebihan dan kekurangan kamu?</h3><div class="answer">“Kelebihan saya adalah memiliki ketertarikan pada desain visual, cukup teliti, dan senang mempelajari hal baru. Untuk kekurangan, saya masih perlu mengembangkan pengalaman dan pemahaman lebih dalam mengenai UX research dan usability testing. Namun, saya terus belajar untuk meningkatkan kemampuan tersebut.”</div></div>
+<div class="card"><h3>Pertanyaan tambahan yang perlu dipahami</h3><div class="table-wrap"><table><thead><tr><th>Pertanyaan</th><th>Fokus jawaban</th></tr></thead><tbody>
+<tr><td>Apa itu Design Thinking?</td><td>Lima tahap Design Thinking.</td></tr><tr><td>Apa itu User Persona?</td><td>Representasi target pengguna.</td></tr><tr><td>Apa itu User Flow?</td><td>Alur pengguna menyelesaikan tugas.</td></tr><tr><td>Apa itu Wireframe?</td><td>Kerangka tampilan.</td></tr><tr><td>Apa itu Prototype?</td><td>Simulasi interaksi.</td></tr><tr><td>Apa itu Usability Testing?</td><td>Menguji kemudahan penggunaan.</td></tr><tr><td>Apa itu Responsive Design?</td><td>Desain untuk berbagai ukuran layar.</td></tr><tr><td>Apa itu Design System?</td><td>Aturan dan komponen desain.</td></tr><tr><td>Apa itu Pain Point?</td><td>Masalah pengguna.</td></tr><tr><td>Apa itu UX Research?</td><td>Penelitian kebutuhan pengguna.</td></tr><tr><td>Apa itu User Journey?</td><td>Perjalanan pengalaman pengguna.</td></tr><tr><td>Apa itu Accessibility?</td><td>Kemudahan akses produk.</td></tr>
+</tbody></table></div></div>
+</section>
+
+<section class="section" id="kolaborasi">
+<div class="section-head"><div class="section-number">10</div><div><h2>Kolaborasi UI/UX dengan tim lain</h2><p class="section-sub">Designer bekerja bersama berbagai peran untuk membangun produk.</p></div></div>
+<div class="table-wrap"><table><thead><tr><th>Posisi</th><th>Tanggung jawab</th></tr></thead><tbody>
+<tr><td><b>UI/UX Designer</b></td><td>Merancang tampilan dan pengalaman pengguna.</td></tr><tr><td><b>Product Manager</b></td><td>Menentukan tujuan dan prioritas produk.</td></tr><tr><td><b>UX Researcher</b></td><td>Melakukan penelitian pengguna.</td></tr><tr><td><b>Frontend Developer</b></td><td>Mengimplementasikan tampilan antarmuka.</td></tr><tr><td><b>Backend Developer</b></td><td>Mengembangkan sistem dan server.</td></tr><tr><td><b>QA Tester</b></td><td>Menguji fungsi dan kualitas produk.</td></tr>
+</tbody></table></div>
+<div class="card"><h3>Contoh alur kolaborasi</h3><div class="steps">
+<div class="step"><div class="step-dot">1</div><div><h3>Product Manager</h3><p>Menjelaskan kebutuhan dan tujuan produk.</p></div></div>
+<div class="step"><div class="step-dot">2</div><div><h3>UI/UX Designer</h3><p>Merancang alur dan tampilan produk.</p></div></div>
+<div class="step"><div class="step-dot">3</div><div><h3>Developer</h3><p>Mengimplementasikan desain menjadi produk.</p></div></div>
+<div class="step"><div class="step-dot">4</div><div><h3>QA Tester</h3><p>Menguji fungsi dan menemukan masalah.</p></div></div>
+<div class="step"><div class="step-dot">5</div><div><h3>Designer & tim</h3><p>Mengevaluasi hasil dan melakukan perbaikan.</p></div></div>
+</div><div class="callout green">Kunci kolaborasi: komunikasi yang jelas, terbuka terhadap masukan, dan memahami kebutuhan serta keterbatasan teknis.</div></div>
+</section>
+
+<section class="section" id="catatan">
+<div class="section-head"><div class="section-number">11</div><div><h2>Checklist poin penting untuk dicatat</h2><p class="section-sub">Centang seluruh materi yang sudah kamu pahami atau catat.</p></div></div>
+<div class="check-summary"><div><strong id="checkCount">0 dari 48 poin</strong><br><small id="checkPercent">Belum ada yang dicentang</small></div><div class="bar"><i id="checkBar"></i></div><button class="btn secondary" onclick="resetChecks()">Reset</button></div>
+<div class="checklist" id="checklist">
+ <div class="check-group"><h3>01 · Dasar UI/UX</h3>
+  <label class="check-item"><input type="checkbox"><span>UI = tampilan visual produk.</span></label>
+  <label class="check-item"><input type="checkbox"><span>UX = pengalaman pengguna.</span></label>
+  <label class="check-item"><input type="checkbox"><span>UI dan UX saling berkaitan.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Tujuan utama adalah menyelesaikan masalah pengguna.</span></label>
+ </div>
+ <div class="check-group"><h3>02 · Prinsip UI Design</h3>
+  <label class="check-item"><input type="checkbox"><span>Consistency — konsistensi.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Visual Hierarchy — hierarki visual.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Contrast — kontras.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Alignment — perataan.</span></label>
+  <label class="check-item"><input type="checkbox"><span>White Space — ruang kosong.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Accessibility — aksesibilitas.</span></label>
+ </div>
+ <div class="check-group"><h3>03 · Prinsip UX Design</h3>
+  <label class="check-item"><input type="checkbox"><span>Usability.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Accessibility.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Efficiency.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Learnability.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Feedback.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Error Prevention.</span></label>
+  <label class="check-item"><input type="checkbox"><span>User-Centered Design.</span></label>
+ </div>
+ <div class="check-group"><h3>04 · Design Thinking</h3>
+  <label class="check-item"><input type="checkbox"><span>Empathize.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Define.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Ideate.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Prototype.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Test.</span></label>
+ </div>
+ <div class="check-group"><h3>05 · Proses Desain</h3>
+  <label class="check-item"><input type="checkbox"><span>Research.</span></label>
+  <label class="check-item"><input type="checkbox"><span>User Persona.</span></label>
+  <label class="check-item"><input type="checkbox"><span>User Flow.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Information Architecture.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Wireframe.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Mockup.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Prototype.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Usability Testing.</span></label>
+ </div>
+ <div class="check-group"><h3>06 · Tools Figma</h3>
+  <label class="check-item"><input type="checkbox"><span>Frame.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Shape dan Text.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Auto Layout.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Components dan Variants.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Constraints dan Layers.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Prototype dan Design System.</span></label>
+ </div>
+ <div class="check-group"><h3>07 · Istilah penting</h3>
+  <label class="check-item"><input type="checkbox"><span>Pain Point.</span></label>
+  <label class="check-item"><input type="checkbox"><span>CTA (Call to Action).</span></label>
+  <label class="check-item"><input type="checkbox"><span>Responsive Design.</span></label>
+  <label class="check-item"><input type="checkbox"><span>User Journey.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Handoff.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Iteration.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Accessibility.</span></label>
+ </div>
+ <div class="check-group"><h3>08 · Persiapan interview</h3>
+  <label class="check-item"><input type="checkbox"><span>Bisa menjelaskan perbedaan UI dan UX.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Bisa menjelaskan proses desain secara runtut.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Bisa menjelaskan tools yang benar-benar dikuasai.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Siapkan satu contoh solusi masalah atau case study.</span></label>
+  <label class="check-item"><input type="checkbox"><span>Jujur mengenai pengalaman dan kemampuan.</span></label>
+ </div>
+</div>
+</section>
+
+<section class="section" id="jadwal">
+<div class="section-head"><div class="section-number">12</div><div><h2>Rencana belajar sebelum interview</h2><p class="section-sub">Pembagian waktu praktis untuk persiapan satu hari.</p></div></div>
+<div class="steps">
+ <div class="step"><div class="step-dot">30</div><div><h3>Sesi 1 — Dasar UI/UX · 30 menit</h3><p>Pengertian UI dan UX, perbedaan keduanya, serta prinsip dasar UI dan UX.</p></div></div>
+ <div class="step"><div class="step-dot">45</div><div><h3>Sesi 2 — Proses UI/UX · 45 menit</h3><p>Design Thinking, User Persona, User Flow, Wireframe, Mockup, Prototype, dan Usability Testing.</p></div></div>
+ <div class="step"><div class="step-dot">60</div><div><h3>Sesi 3 — Figma · 60 menit</h3><p>Kenali interface, buat frame, gunakan Auto Layout, buat button/component, dan coba prototype sederhana.</p></div></div>
+ <div class="step"><div class="step-dot">45</div><div><h3>Sesi 4 — Case Study · 45 menit</h3><p>Pilih satu masalah pengguna, tentukan solusi, buat user flow dan wireframe, lalu jelaskan alasan desain.</p></div></div>
+ <div class="step"><div class="step-dot">30</div><div><h3>Sesi 5 — Simulasi interview · 30 menit</h3><p>Latih penjelasan UI/UX, proses desain, kelebihan-kekurangan, pengalaman, dan portfolio.</p></div></div>
+</div>
+</section>
+
+<section class="section" id="tips">
+<div class="section-head"><div class="section-number">13</div><div><h2>Tips menghadapi interview</h2><p class="section-sub">Sikap dan cara menjawab yang membantu kandidat pemula.</p></div></div>
+<div class="card"><ol>
+<li><b>Jangan mengaku menguasai hal yang belum dipahami.</b> Jelaskan kemampuan secara jujur.</li>
+<li><b>Utamakan cara berpikir.</b> Interviewer ingin tahu bagaimana kamu menyelesaikan masalah, bukan hanya seberapa menarik desainmu.</li>
+<li><b>Hubungkan desain dengan kebutuhan pengguna.</b> Jelaskan alasan di balik keputusan desain, bukan hanya “karena terlihat bagus”.</li>
+<li><b>Jangan takut mengatakan masih belajar.</b> Tunjukkan kemauan belajar, komunikasi, dan kesiapan menerima arahan.</li>
+<li><b>Siapkan satu case study.</b> Proyek latihan boleh digunakan selama kamu jujur bahwa itu proyek pribadi atau simulasi.</li>
+</ol></div>
+<div class="callout green"><b>Contoh cara menjelaskan keputusan desain:</b> “Saya menggunakan warna utama untuk menjaga konsistensi visual dan memberi penekanan pada tombol utama.” Pastikan alasan desain sesuai konteks produk.</div>
+</section>
+
+<section class="section" id="latihan">
+<div class="section-head"><div class="section-number">14</div><div><h2>Mini test UI/UX</h2><p class="section-sub">Uji pemahaman dasar sebelum interview. Pilih satu jawaban untuk setiap pertanyaan.</p></div></div>
+<div class="card" id="quiz">
+ <div class="quiz-question" data-answer="0" data-explain="UI membahas tampilan visual, sedangkan UX membahas pengalaman pengguna."><p>1. Apa perbedaan utama antara UI dan UX?</p>
+  <label class="option"><input type="radio" name="q1" value="0"> UI berfokus pada tampilan, UX berfokus pada pengalaman pengguna</label><label class="option"><input type="radio" name="q1" value="1"> UI dan UX memiliki arti yang sama</label><label class="option"><input type="radio" name="q1" value="2"> UI berfokus pada database, UX berfokus pada coding</label><label class="option"><input type="radio" name="q1" value="3"> UI hanya untuk website, UX hanya untuk aplikasi</label></div>
+ <div class="quiz-question" data-answer="1" data-explain="UX Research membantu designer memahami kebutuhan, perilaku, dan masalah pengguna."><p>2. Apa tujuan utama UX Research?</p>
+  <label class="option"><input type="radio" name="q2" value="0"> Memilih warna aplikasi</label><label class="option"><input type="radio" name="q2" value="1"> Memahami kebutuhan, perilaku, dan masalah pengguna</label><label class="option"><input type="radio" name="q2" value="2"> Membuat logo produk</label><label class="option"><input type="radio" name="q2" value="3"> Menentukan bahasa pemrograman</label></div>
+ <div class="quiz-question" data-answer="2" data-explain="Lima tahapannya adalah Empathize, Define, Ideate, Prototype, dan Test."><p>3. Apa urutan tahapan Design Thinking yang benar?</p>
+  <label class="option"><input type="radio" name="q3" value="0"> Prototype, Test, Define, Ideate, Empathize</label><label class="option"><input type="radio" name="q3" value="1"> Define, UI, Coding, Test, Launch</label><label class="option"><input type="radio" name="q3" value="2"> Empathize, Define, Ideate, Prototype, Test</label><label class="option"><input type="radio" name="q3" value="3"> Research, Coding, Design, Publish, Test</label></div>
+ <div class="quiz-question" data-answer="1" data-explain="Wireframe fokus pada struktur tampilan, sedangkan prototype menyimulasikan interaksi."><p>4. Apa perbedaan wireframe dan prototype?</p>
+  <label class="option"><input type="radio" name="q4" value="0"> Keduanya selalu sama</label><label class="option"><input type="radio" name="q4" value="1"> Wireframe adalah kerangka tampilan, prototype adalah simulasi interaksi</label><label class="option"><input type="radio" name="q4" value="2"> Wireframe untuk coding, prototype untuk database</label><label class="option"><input type="radio" name="q4" value="3"> Prototype hanya berupa gambar statis</label></div>
+ <div class="quiz-question" data-answer="3" data-explain="Cari penyebab masalah pengguna, lalu perbaiki posisi atau hierarki tombol berdasarkan kebutuhan dan pengujian."><p>5. Jika pengguna kesulitan menemukan tombol checkout, apa langkah yang tepat?</p>
+  <label class="option"><input type="radio" name="q5" value="0"> Mengganti seluruh warna aplikasi</label><label class="option"><input type="radio" name="q5" value="1"> Menambahkan lebih banyak menu</label><label class="option"><input type="radio" name="q5" value="2"> Mengabaikan masalah tersebut</label><label class="option"><input type="radio" name="q5" value="3"> Menganalisis alur pengguna dan memperbaiki posisi atau hierarki tombol</label></div>
+ <button class="btn" onclick="gradeQuiz()">Periksa jawaban</button> <button class="btn secondary" onclick="resetQuiz()">Ulangi</button>
+ <div id="quizResult" aria-live="polite"></div>
+</div>
+</section>
+<div class="card" style="background:linear-gradient(120deg,#eeecff,#eaf7f3);border:0">
+ <h2 style="font-size:21px;margin:0 0 8px">Fokus utama sebelum interview</h2>
+ <ol><li>Pahami UI dan UX, lalu jelaskan dengan bahasamu sendiri.</li><li>Pahami lima tahap Design Thinking.</li><li>Kenali Figma dan proses wireframe, mockup, component, serta prototype.</li></ol>
+ <p>Jangan hanya menghafal istilah. Latih cara menjelaskan masalah pengguna, proses analisis, solusi desain, dan alasan di balik keputusanmu.</p>
+</div>
+<footer class="footer">UI/UX Starter Guide · Materi belajar pemula & persiapan interview<br>Belajar bertahap, praktikkan, dan terus evaluasi. <br>Website by Vermilion</footer>
+</main>
+</div>
+<script>
+const boxes=[...document.querySelectorAll('#checklist input[type="checkbox"]')];
+const STORAGE_KEY='uiux-starter-checklist-v1';
+function updateProgress(){
+ const done=boxes.filter(b=>b.checked).length,total=boxes.length,pct=Math.round(done/total*100);
+ document.getElementById('checkCount').textContent=`${done} dari ${total} poin`;
+ document.getElementById('checkPercent').textContent=done===total?'Semua poin sudah dipelajari!':done===0?'Belum ada yang dicentang':`${pct}% checklist selesai`;
+ document.getElementById('checkBar').style.width=pct+'%';
+ document.getElementById('topProgress').style.width=pct+'%';
+ document.getElementById('progressText').textContent=pct+'% checklist selesai';
+}
+function saveChecks(){localStorage.setItem(STORAGE_KEY,JSON.stringify(boxes.map(b=>b.checked)));updateProgress()}
+function resetChecks(){if(confirm('Reset semua checklist?')){boxes.forEach(b=>b.checked=false);saveChecks()}}
+try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(Array.isArray(saved))boxes.forEach((b,i)=>b.checked=!!saved[i])}catch(e){}
+boxes.forEach(b=>b.addEventListener('change',saveChecks));updateProgress();
+function gradeQuiz(){
+ const qs=[...document.querySelectorAll('.quiz-question')];let score=0,unanswered=0;
+ qs.forEach((q,i)=>{const chosen=q.querySelector('input:checked');const correct=Number(q.dataset.answer);if(!chosen)unanswered++;else if(Number(chosen.value)===correct)score++;
+ let feedback=q.querySelector('.quiz-feedback');if(!feedback){feedback=document.createElement('div');feedback.className='answer quiz-feedback';q.appendChild(feedback)}
+ feedback.textContent=(chosen&&Number(chosen.value)===correct?'✓ Benar. ':'✕ Belum tepat. ')+q.dataset.explain;
+ });
+ const result=document.getElementById('quizResult');
+ result.innerHTML=`<div class="callout ${score>=4?'green':'orange'}"><b>Nilai kamu: ${score}/${qs.length}</b><br>${unanswered?unanswered+' pertanyaan belum dijawab. ':''}${score===5?'Bagus sekali!':score>=3?'Cukup baik, pelajari lagi jawaban yang belum tepat.':'Ulangi materi dasar dan coba lagi.'}</div>`;
+}
+function resetQuiz(){document.querySelectorAll('#quiz input').forEach(i=>i.checked=false);document.querySelectorAll('.quiz-feedback').forEach(e=>e.remove());document.getElementById('quizResult').innerHTML=''}
+const navLinks=[...document.querySelectorAll('.nav a')];
+const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-20% 0px -70% 0px'});sections.forEach(s=>s&&observer.observe(s))}
+</script>
+</body>
+</html>'''
+
+path = Path("/mnt/data/uiux_starter_guide.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path} ({path.stat().st_size:,} bytes)")
